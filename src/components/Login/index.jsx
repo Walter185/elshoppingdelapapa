@@ -1,9 +1,21 @@
-import "./Login.css"
+import {
+  Button,
+  chakra,
+  FormControl,
+  FormLabel,
+  Heading,
+  // HStack,
+  Input,
+  Stack,
+  useToast,
+} from '@chakra-ui/react'
 import { useState } from 'react'
+// import { FaGoogle } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Card } from '../Card/Card'
+// import DividerWithText from '../DividerWithText/DividerWithText'
 import { Layout } from '../Layout/Layout'
-import { useAuth } from '../../storage/cartContext'
+import { useAuth } from "../../Context/context.js"
 import useMounted from '../hooks/useMounted'
 
 export default function Loginpage() {
@@ -22,13 +34,20 @@ export default function Loginpage() {
 
   return (
     <Layout>
-      <h1 style={{textAlign: 'center', margin: '12px 0'}}>Login</h1>
+      <Heading textAlign='center' my={12}>
+        Login
+      </Heading>
       <Card maxW='md' mx='auto' mt={4}>
-        <form
+        <chakra.form
           onSubmit={async e => {
             e.preventDefault()
             if (!email || !password) {
-              alert('Credentials not valid.')
+              toast({
+                description: 'Credentials not valid.',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
               return
             }
             // your login logic here
@@ -39,43 +58,81 @@ export default function Loginpage() {
               })
               .catch(error => {
                 console.log(error.message)
-                alert(error.message)
+                toast({
+                  description: error.message,
+                  status: 'error',
+                  duration: 9000,
+                  isClosable: true,
+                })
               })
               .finally(() => {
+                // setTimeout(() => {
+                //   mounted.current && setIsSubmitting(false)
+                //   console.log(mounted.current)
+                // }, 1000)
                 mounted.current && setIsSubmitting(false)
               })
           }}
         >
-          <div style={{marginBottom: '24px'}}>
-            <label>Email address</label>
-            <input
-              name='email'
-              type='email'
-              autoComplete='email'
-              required
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </div>
-          <div style={{marginBottom: '24px'}}>
-            <label>Password</label>
-            <input
-              name='password'
-              type='password'
-              autoComplete='password'
-              value={password}
-              required
-              onChange={e => setPassword(e.target.value)}
-            />
-          </div>
-          <button
-            type='submit'
-            style={{backgroundColor: 'pink', color: '#fff', padding: '12px 24px', border: 'none', borderRadius: '4px', fontSize: '16px', cursor: 'pointer'}}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Signing in...' : 'Sign in'}
-          </button>
-        </form>
+          <Stack spacing='6'>
+            <FormControl id='email'>
+              <FormLabel>Email address</FormLabel>
+              <Input
+                name='email'
+                type='email'
+                autoComplete='email'
+                required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
+            </FormControl>
+            <FormControl id='password'>
+              <FormLabel>Password</FormLabel>
+              <Input
+                name='password'
+                type='password'
+                autoComplete='password'
+                value={password}
+                required
+                onChange={e => setPassword(e.target.value)}
+              />
+            </FormControl>
+            {/* <PasswordField /> */}
+            <Button
+              type='submit'
+              colorScheme='pink'
+              size='lg'
+              fontSize='md'
+              isLoading={isSubmitting}
+            >
+              Sign in
+            </Button>
+          </Stack>
+        </chakra.form>
+        {/* <HStack justifyContent='space-between' my={4}> 
+          <Button variant='link'>
+            <Link to='/forgot-password'>Forgot password?</Link>
+          </Button> 
+          <Button variant='link' onClick={() => navigate('/register')}>
+            Register
+          </Button>
+          </HStack>
+          <DividerWithText my={6}>OR</DividerWithText>
+        <Button
+          variant='outline'
+          colorScheme='red'
+          leftIcon={<FaGoogle />}
+          onClick={() =>
+            signInWithGoogle()
+              .then(user => {
+                handleRedirectToOrBack()
+                console.log(user)
+              })
+              .catch(e => console.log(e.message))
+          }
+        >
+          Sign in with Google
+        </Button> */}
       </Card>
     </Layout>
   )
