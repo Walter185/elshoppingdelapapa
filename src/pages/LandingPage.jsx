@@ -1,10 +1,10 @@
-// import HomeContainer from "../components/HomeContainer/HomeContainer";
+import HomeContainer from "../components/HomeContainer"
 
 export default function LandingPage() {
 
     return (
       <div>
-          {/* <HomeContainer/> */}
+          <HomeContainer/>
       </div>
     )
   }

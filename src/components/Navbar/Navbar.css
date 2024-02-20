@@ -2,15 +2,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
     background-color: orange;
     color: #fff;
+    max-height: 110px;
   }
   
   .navbar__logo img {
     width: 20em; 
     height: auto;
     margin-left: 20px;
+    margin-top:-20px;
   }
   
   .navbar__actions{
