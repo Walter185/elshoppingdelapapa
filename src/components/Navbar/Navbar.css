@@ -5,6 +5,10 @@
     background-color: orange;
     color: #fff;
     max-height: 110px;
+    text-decoration: none;
+    position: sticky;
+    top: 0;
+    z-index: 1;  
   }
   
   .navbar__logo img {

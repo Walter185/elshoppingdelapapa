@@ -6,6 +6,10 @@ import { CartProvider } from './Context/context';
 import Loginpage from "./components/Login"
 import { ToastContainer } from 'react-toastify';
 import NotFound from './pages/ErrorPage';
+import Show from './components/Admin/Show';
+import RequireAuth from './components/Login/RequireAuth';
+import { Foot } from './components/Footer';
+
 
 const App = () => {
   return (
@@ -18,10 +22,13 @@ const App = () => {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/login" element={<Loginpage />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/show" element={<RequireAuth><Show /></RequireAuth>} />
 
             </Routes>
+
         </BrowserRouter>
     </CartProvider>
+    <Foot />
     </>
 
   );

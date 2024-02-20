@@ -2,10 +2,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import styled from "styled-components"
 import { Carousel } from "react-responsive-carousel"
 import { useState } from "react"
-
+import banner from "../../assets/img/portada.jpg"
 
 const Img = styled.img`
-  width: 100%;
+  width: auto;
   max-height: 550px;
   display: flex;
 `;
@@ -21,10 +21,15 @@ export default function CarrouselPrincipal() {
     }
     const imageData = [
       {
-          label: "Image 1",
-          alt: "Rotoenfardadoras Mainero",
-          src: "https://firebasestorage.googleapis.com/v0/b/reactapp-683e2.appspot.com/o/img%2Frotoenfardadoras.jpg?alt=media&token=62201585-b132-4ea0-b6e9-494eb6eeabf1",
-        }
+        label: "Image 1",
+        alt: "Portada del Shopping de la Papa",
+        src: banner,
+      },
+      {
+        label: "Image 2",
+        alt: "Portada del Shopping de la Papa",
+        src: banner,
+      }
     ]
     
   const renderSlides = imageData.map((image) => (

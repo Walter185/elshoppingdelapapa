@@ -4,15 +4,15 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  // HStack,
+  HStack,
   Input,
   Stack,
   useToast,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-// import { FaGoogle } from 'react-icons/fa'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Card } from '../Card/Card'
+import { FaGoogle } from 'react-icons/fa'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Card } from '../Card/index.jsx'
 // import DividerWithText from '../DividerWithText/DividerWithText'
 import { Layout } from '../Layout/Layout'
 import { useAuth } from "../../Context/context.js"
@@ -27,6 +27,7 @@ export default function Loginpage() {
   const toast = useToast()
   const location = useLocation()
   const mounted = useMounted()
+  const { signInWithGoogle } = useAuth()
 
   function handleRedirectToOrBack() {
     navigate(location.state?.from ?? '/show')
@@ -109,7 +110,7 @@ export default function Loginpage() {
             </Button>
           </Stack>
         </chakra.form>
-        {/* <HStack justifyContent='space-between' my={4}> 
+        <HStack justifyContent='space-between' my={4}> 
           <Button variant='link'>
             <Link to='/forgot-password'>Forgot password?</Link>
           </Button> 
@@ -117,7 +118,7 @@ export default function Loginpage() {
             Register
           </Button>
           </HStack>
-          <DividerWithText my={6}>OR</DividerWithText>
+          {/* <DividerWithText my={6}>OR</DividerWithText> */}
         <Button
           variant='outline'
           colorScheme='red'
@@ -132,7 +133,7 @@ export default function Loginpage() {
           }
         >
           Sign in with Google
-        </Button> */}
+        </Button>
       </Card>
     </Layout>
   )

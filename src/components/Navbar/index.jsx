@@ -9,21 +9,6 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import Hamburger from "hamburger-react";
 
 
-const Nav = styled.nav`
-  background: #343a40;
-  display: flex;
-  justify-content: space-between;
-  text-decoration: none;
-  align-items: center;
-  height: 65px;
-  position: sticky;
-  top: 0;
-  z-index: 1;  
-
-  @media screen and (max-width:1000px) {
-  justify-content:space-between  }
-`;
-
 const Li = styled.li`
   list-style: none;
   display: block;
@@ -57,12 +42,6 @@ const Ul = styled.ul`
       top: -195px;
       position: absolute;
   }}
-`;
-const ContainerNav = styled.div`
-  display: flex;
-  width:100%;
-  padding: 10px;
-  margin-left:20px;
 `;
 
 const Pan = styled.div`
@@ -102,6 +81,7 @@ const Navbar = () => {
               {currentUser && (
                 <Navlink
                   to="/"
+                  name="Salir"
                   onClick={async (e) => {
                     await logout();
                   }}
