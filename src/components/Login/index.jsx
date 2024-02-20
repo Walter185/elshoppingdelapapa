@@ -36,7 +36,7 @@ export default function Loginpage() {
   return (
     <Layout>
       <Heading textAlign='center' my={12}>
-        Login
+        Panel Administrador
       </Heading>
       <Card maxW='md' mx='auto' mt={4}>
         <chakra.form
@@ -106,7 +106,7 @@ export default function Loginpage() {
               fontSize='md'
               isLoading={isSubmitting}
             >
-              Sign in
+              Iniciar sesión
             </Button>
           </Stack>
         </chakra.form>

@@ -1,0 +1,35 @@
+section {
+    background-color: darkgreen;
+}
+
+iframe {
+    margin-top: 20px;
+    width: 90%;
+    height: 20rem;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulo {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white !important;
+}
+
+@media screen and (max-width:1000px) {
+    iframe {
+        height: 25rem;
+
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    iframe {
+        width: 20rem;
+        height: 20rem;
+    }
+
+}

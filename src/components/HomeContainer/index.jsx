@@ -1,5 +1,6 @@
-import CarrouselPrincipal from "../CarrouselPrincipal"
-import Productos from "../Productos"
+// import CarrouselPrincipal from "../CarrouselPrincipal"
+import Location from "../Location"
+// import Productos from "../Productos"
 import "./HomeContainer.css"
 
 
@@ -8,7 +9,7 @@ export default function HomeContainer() {
         <>
             {/* <CarrouselPrincipal /> */}
             {/* <Productos /> */}
-
+            <Location />
         </>
     )
 }
