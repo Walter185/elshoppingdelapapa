@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import { CartProvider } from './Context/context';
 import Loginpage from "./components/Login"
 import { ToastContainer } from 'react-toastify';
+import NotFound from './pages/ErrorPage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Routes >
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/login" element={<Loginpage />} />
+                <Route path="*" element={<NotFound />} />
 
             </Routes>
         </BrowserRouter>

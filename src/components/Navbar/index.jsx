@@ -4,6 +4,9 @@ import { useAuth } from '../../Context/context';
 import styled from "styled-components";
 import Navlink from "./Navlink";
 import { useState } from "react";
+import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { FaMoon, FaSun } from "react-icons/fa";
+import Hamburger from "hamburger-react";
 
 
 const Nav = styled.nav`
@@ -35,21 +38,16 @@ const Li = styled.li`
     margin: 0.2rem 0.5rem;
 
   }
-  &&:not(.active):hover {
-  background-color: #6a79cf;
-}
 `;
 
 const Ul = styled.ul`
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
-  margin-right: 10px;
   @media screen and (max-width:1000px) {
     display: none;
     flex-direction: column;
     width: 100% !important;
-    margin-top: 265px;
+    margin-top: 295px;
     margin-bottom: 0.25rem;
     background-color: rgb(212, 57, 18) !important;
     &.open {
@@ -81,6 +79,7 @@ const Pan = styled.div`
 const Navbar = () => {
   const { logout, currentUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const { toggleColorMode } = useColorMode();
 
 
   return (
@@ -109,8 +108,19 @@ const Navbar = () => {
                 />
               )}
             </Li>
-            
+            <Li>
+              <IconButton
+                variant="ghost"
+                icon={useColorModeValue(<FaSun />, <FaMoon />)}
+                onClick={toggleColorMode}
+                color={"white"}
+                aria-label="toggle-dark-mode"
+              />
+            </Li>
             </Ul>
+            <Pan>
+            <Hamburger title="Hamburguesa" toggled={isOpen} toggle={setIsOpen} duration={0.8} color="coral" />
+          </Pan>
             </div>
     </nav>
   );
