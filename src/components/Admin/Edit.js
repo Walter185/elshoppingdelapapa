@@ -5,36 +5,20 @@ import db from "../../firebase/firebase";
 
 
 function Edit() {
-    const [codigo, setCodigo] = useState("");
     const [category, setCategory] = useState("");
-    const [detail, setDetail] = useState("");
-    const [extra1, setExtra1] = useState("");
-    const [extra2, setExtra2] = useState("");
-    const [extra3, setExtra3] = useState("");
-    const [extra4, setExtra4] = useState("");
-    const [extra5, setExtra5] = useState("");
-    const [extra6, setExtra6] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
-    const [imgUrl2, setImgUrl2] = useState("");
-    const [imgUrl3, setImgUrl3] = useState("");
-    const [imgUrl4, setImgUrl4] = useState("");
-    const [imgUrlPdf, setImgUrlPdf] = useState("");
-    const [pdf, setPdf] = useState("");
-    const [location, setLocation] = useState("");
-    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [img1, setImg1] = useState("");
+    const [img2, setImg2] = useState("");
+    const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
-    const [stock, setStock] = useState(0);
     const navigate = useNavigate()
     const { id } = useParams()
-    const [videoUrl, setVideoUrl] = useState("");
-    const [ videoUrl2, setVideoUrl2] = useState("");
     const update = async (e) => {
         e.preventDefault()
         const product = doc(db, "products", id)
         const data = {
-            codigo: codigo, category: category, detail: detail, extra1: extra1, extra2: extra2, extra3: extra3, extra4: extra4, extra5: extra5, extra6: extra6, imgUrl: imgUrl,
-            imgUrl2: imgUrl2, imgUrl3: imgUrl3, imgUrl4: imgUrl4, imgUrlPdf: imgUrlPdf, pdf: pdf, location: location, name: name, price: price, stock: Number(stock),
-            videoUrl: videoUrl, videoUrl2: videoUrl2}
+            title: title, category: category, description: description, img1: img1,
+            img2: img2, price: price}
         await updateDoc(product, data)
         navigate("/show")
     }
@@ -42,27 +26,12 @@ function Edit() {
     const getProductById = async (id) => {
         const product = await getDoc(doc(db, "products", id))
         if (product.exists()) {
-            setCodigo(product.data().codigo)
+            setTitle(product.data().title)
             setCategory(product.data().category)
-            setDetail(product.data().detail)
-            setExtra1(product.data().extra1)
-            setExtra2(product.data().extra2)
-            setExtra3(product.data().extra3)
-            setExtra4(product.data().extra4)
-            setExtra5(product.data().extra5)
-            setExtra6(product.data().extra6)
-            setImgUrl(product.data().imgUrl)
-            setImgUrl2(product.data().imgUrl2)
-            setImgUrl3(product.data().imgUrl3)
-            setImgUrl4(product.data().imgUrl4)
-            setImgUrlPdf(product.data().imgUrlPdf)
-            setPdf(product.data().pdf)
-            setLocation(product.data().location)
-            setName(product.data().name)
+            setDescription(product.data().description)
+            setImg1(product.data().img1)
+            setImg2(product.data().img2)
             setPrice(product.data().price)
-            setStock(product.data().stock)
-            setVideoUrl(product.data().videoUrl)
-            setVideoUrl2(product.data().videoUrl2)
         }
         else {
             console.log("El producto no existe")
@@ -82,41 +51,33 @@ function Edit() {
 
                     <form onSubmit={update}>
                         <div className="mb-3">
-                            <label className="form-label">Codigo</label>
+                            <label className="form-label">Titulo</label>
                             <input
                                 type="text"
-                                value={codigo}
-                                onChange={(e) => setCodigo(e.target.value)}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 className="form-control"
                             />
                         </div>
                         <div className="mb-3">
-                            <label className="form-label">Nombre</label>
+                            <label className="form-label">Descripcion</label>
                             <input
                                 type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                                 className="form-control"
                             />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Categoria</label>
-                            <select
+                            <input
+                                type="text"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="form-select"
-                            >
-                                <option value="">Seleccionar categoría</option>
-                                <option value="Cosecha">Cosecha</option>
-                                <option value="Almacenamiento">Almacenamiento</option>
-                                <option value="Silaje">Silaje</option>
-                                <option value="Preparación-Distribución">Preparación-Distribución</option>
-                                <option value="Henificacion">Henificacion</option>
-                                <option value="Repuestos">Repuestos</option>
-
-                            </select>
+                                className="form-control"
+                            />
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label className="form-label">Detalle</label>
                             <input
                                 type="text"
@@ -178,13 +139,13 @@ function Edit() {
                                 onChange={(e) => setExtra6(e.target.value)}
                                 className="form-control"
                             />
-                        </div>
+                        </div> */}
                         <div className="mb-3">
                             <label className="form-label">Url de Imagen</label>
                             <input
                                 type="text"
-                                value={imgUrl}
-                                onChange={(e) => setImgUrl(e.target.value)}
+                                value={img1}
+                                onChange={(e) => setImg1(e.target.value)}
                                 className="form-control"
                             />
                         </div>
@@ -192,12 +153,12 @@ function Edit() {
                             <label className="form-label">Url de Imagen 2</label>
                             <input
                                 type="text"
-                                value={imgUrl2}
-                                onChange={(e) => setImgUrl2(e.target.value)}
+                                value={img2}
+                                onChange={(e) => setImg2(e.target.value)}
                                 className="form-control"
                             />
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label className="form-label">Url de Imagen 3</label>
                             <input
                                 type="text"
@@ -268,7 +229,7 @@ function Edit() {
                                 onChange={(e) => setStock(e.target.value)}
                                 className="form-control"
                             />
-                        </div>
+                        </div> */}
                         <div className="mb-3">
                             <label className="form-label">Precio</label>
                             <input

@@ -40,7 +40,7 @@ const Show = () => {
 
     const confirmDelete = (id) => {
         Swal.fire({
-            title: 'Estás seguro?',
+            name: 'Estás seguro?',
             text: "No podrás recuperar lo borrado!",
             icon: 'warning',
             showCancelButton: true,
@@ -73,16 +73,17 @@ const Show = () => {
                         <Link to="/create">Crear</Link>
                     </Button>
 
+
                     <table className="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <TH>Codigo</TH>
                                 <TH>Nombre</TH>
+                                <TH>Descripcion</TH>
                                 <TH>Categoria</TH>
                                 {/* <TH>Detalle</TH>
                             <TH>Extra</TH> */}
                                 <TH>Precio</TH>
-                                <TH>Stock</TH>
+                                {/* <TH>Stock</TH> */}
                                 {/* <TH>Ubicacion</TH>
                             <TH>Imagen</TH>
                             <TH>Pdf</TH> */}
@@ -92,19 +93,18 @@ const Show = () => {
                         <tbody>
                             {products.map((product) => (
                                 <tr key={product.id}>
-                                    <TD>{product.codigo}</TD>
-                                    <TD>{product.name}</TD>
+                                    <TD>{product.title}</TD>
+                                    <TD>{product.description}</TD>
                                     <TD>{product.category}</TD>
                                     {/* <TD>{product.detail}</TD>
                                 <TD>{product.extra}</TD> */}
                                     <TD>{product.price}</TD>
-                                    <TD>{product.stock}</TD>
                                     {/* <TD>{product.location}</TD>
                                 <TD>{product.imgUrl}</TD>
                                 <TD>{product.pdf}</TD> */}
                                     <TD>
-                                        <Link to={`/edit/${product.id}`} className="btn btn-light"><i className="fa-solid fa-pencil"></i></Link>
-                                        <button onClick={() => { confirmDelete(product.id) }} className="btn btn-danger"><i className="fa-solid fa-trash"></i></button>
+                                        <Link to={`/edit/${product.id}`} className="btn btn-light"><i className="fa-solid fa-pencil"></i>Editar</Link><span>   </span>
+                                        <button onClick={() => { confirmDelete(product.id) }} className="btn btn-danger"><i className="fa-solid fa-trash"></i>Borrar</button>
                                     </TD>
                                 </tr>
                             ))}

@@ -11,9 +11,10 @@ import RequireAuth from './components/Login/RequireAuth';
 import { Foot } from './components/Footer';
 import Create from './components/Admin/Create';
 import Edit from './components/Admin/Edit';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 
-const App = () => {
+function App(props)  {
   return (
     <>   
     <ToastContainer autoClose={2000} hideProgressBar />
@@ -22,6 +23,8 @@ const App = () => {
             <Navbar />
             <Routes >
                 <Route path="/" element={<LandingPage />} />
+                <Route path="/category/:categoryid" element={<ItemListContainer />} />
+
                 <Route path="/login" element={<Loginpage />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/show" element={<RequireAuth><Show /></RequireAuth>} />

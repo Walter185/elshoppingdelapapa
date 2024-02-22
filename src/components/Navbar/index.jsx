@@ -57,7 +57,7 @@ const Pan = styled.div`
 
 const Navbar = () => {
   const { logout, currentUser } = useAuth();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const { toggleColorMode } = useColorMode();
 
 
@@ -99,7 +99,7 @@ const Navbar = () => {
             </Li>
             </Ul>
             <Pan>
-            <Hamburger title="Hamburguesa" toggled={isOpen} toggle={setIsOpen} duration={0.8} color="coral" />
+            <Hamburger name="Hamburguesa" toggled={isOpen} toggle={setIsOpen} duration={0.8} color="coral" />
           </Pan>
             </div>
     </nav>

@@ -1,0 +1,9 @@
+.card-width{
+    max-width: 298px;
+}
+
+.img-product{
+    width: 200px;
+    align-self: center;
+    padding-bottom: 10px;
+}

@@ -4,37 +4,19 @@ import { collection, addDoc } from "firebase/firestore"
 import db from "../../firebase/firebase"
 
 const Create = () => {
-    const [codigo, setCodigo] = useState("");
-    const [name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
-    const [detail, setDetail] = useState("");
-    const [extra1, setExtra1] = useState("");
-    const [extra2, setExtra2] = useState("");
-    const [extra3, setExtra3] = useState("");
-    const [extra4, setExtra4] = useState("");
-    const [extra5, setExtra5] = useState("");
-    const [extra6, setExtra6] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
-    const [imgUrl2, setImgUrl2] = useState("");
-    const [imgUrl3, setImgUrl3] = useState("");
-    const [imgUrl4, setImgUrl4] = useState("");
-    const [imgUrlPdf, setImgUrlPdf] = useState("");
-    const [pdf, setPdf] = useState("");
-    const [location, setLocation] = useState("");
+    const [description, setDescription] = useState("");
+    const [img1, setImg1] = useState("");
+    const [img2, setImg2] = useState("");
     const [price, setPrice] = useState(0);
-    const [stock, setStock] = useState(0);
     const navigate = useNavigate()
-    const [videoUrl, setVideoUrl] = useState("");
-    const [videoUrl2, setVideoUrl2] = useState("");
     const productsCollection = collection(db, "products")
 
     const store = async (e) => {
         e.preventDefault()
-        await addDoc(productsCollection, {
-            codigo: codigo, category: category, detail: detail, extra1: extra1, extra2: extra2, extra3: extra3, extra4: extra4, extra5: extra5, extra6: extra6, imgUrl: imgUrl,
-            imgUrl2: imgUrl2, imgUrl3: imgUrl3, imgUrl4: imgUrl4, imgUrlPdf: imgUrlPdf,
-            location: location, name: name, price: price, stock: stock, pdf: pdf, videoUrl: videoUrl,
-            videoUrl2: videoUrl2})
+        await addDoc(productsCollection, {title: title, category: category,
+            description: description, img1: img1, img2: img2, price: price})
         navigate("/show")
     }
     return (
@@ -44,7 +26,7 @@ const Create = () => {
                     <h1>Crear Producto</h1>
 
                     <form onSubmit={store}>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label className="form-label">Codigo</label>
                             <input
                                 type="text"
@@ -53,13 +35,13 @@ const Create = () => {
                                 placeholder="Codigo del producto"
                                 className="form-control"
                             />
-                        </div>
+                        </div> */}
                         <div className="mb-3">
                             <label className="form-label">Nombre</label>
                             <input
                                 type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 placeholder="Nombre del producto"
                                 className="form-control"
                             />
@@ -68,13 +50,13 @@ const Create = () => {
                             <label className="form-label">Detalle</label>
                             <input
                                 type="text"
-                                value={detail}
-                                onChange={(e) => setDetail(e.target.value)}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                                 placeholder="Detalle del producto"
                                 className="form-control"
                             />
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label className="form-label">Extra 1</label>
                             <input
                                 type="text"
@@ -133,30 +115,23 @@ const Create = () => {
                                 placeholder="Extra 6 del producto"
                                 className="form-control"
                             />
-                        </div>
-                        <div className="mb-3">
+                        </div> */}
+                             <div className="mb-3">
                             <label className="form-label">Categoria</label>
-                            <select
+                            <input
+                                type="text"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="form-select"
-                            >
-                                <option value="">Seleccionar categoría</option>
-                                <option value="Cosecha">Cosecha</option>
-                                <option value="Almacenamiento">Almacenamiento</option>
-                                <option value="Silaje">Silaje</option>
-                                <option value="Preparación-Distribución">Preparación-Distribución</option>
-                                <option value="Henificacion">Henificacion</option>
-                                <option value="Repuestos">Repuestos</option>
-
-                            </select>
+                                placeholder="Extra 3 del producto"
+                                className="form-control"
+                            />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Url de Imagen</label>
                             <input
                                 type="text"
-                                value={imgUrl}
-                                onChange={(e) => setImgUrl(e.target.value)}
+                                value={img1}
+                                onChange={(e) => setImg1(e.target.value)}
                                 placeholder="Imagen del producto"
                                 className="form-control"
                             />
@@ -165,13 +140,13 @@ const Create = () => {
                             <label className="form-label">Url de Imagen 2</label>
                             <input
                                 type="text"
-                                value={imgUrl2}
-                                onChange={(e) => setImgUrl2(e.target.value)}
+                                value={img2}
+                                onChange={(e) => setImg2(e.target.value)}
                                 placeholder="Imagen del producto"
                                 className="form-control"
                             />
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label className="form-label">Url de Imagen 3</label>
                             <input
                                 type="text"
@@ -250,11 +225,11 @@ const Create = () => {
                                 placeholder="Stock del producto"
                                 className="form-control"
                             />
-                        </div>
+                        </div> */}
                         <div className="mb-3">
                             <label className="form-label">Precio</label>
                             <input
-                                type="text"
+                                type="num"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 placeholder="Precio del producto"

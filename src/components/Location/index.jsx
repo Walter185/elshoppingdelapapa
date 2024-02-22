@@ -3,7 +3,7 @@ import ContactForm from "../ContactForm";
 import "./Location.css"
 
 
-const Title = styled.h4`
+const name = styled.h4`
 margin-left: auto;
 margin-right: auto;
 text-align: center;
@@ -24,20 +24,20 @@ function Location() {
             </div>
 
             <div className="col-sm-11 col-md-11 col-lg-5 p-3">
-              <Title style={{ color: "#78909c" }}>
+              <name style={{ color: "#78909c" }}>
                 <b>Estamos en Mercedes - Soriano</b>
                 <p style={{ fontSize: 'medium', color: 'white' }}>
                   Pedro Hors y Ruta 2 <a href="tel:+59891246285"><b>Tel: 091 246 285 </b></a></p>
                 <iframe
                   src={iframe}
-                  title="Ubicacion de El Shopping de la Papa"
+                  name="Ubicacion de El Shopping de la Papa"
                 ></iframe>
-              </Title>
+              </name>
             </div>
             <div className="col-sm-11 col-md-11 col-lg-5 p-3">
-              <Title>
+              <name>
                 <ContactForm />
-              </Title>
+              </name>
             </div>
 
             <div className="col-sm-0 col-md-1 col-lg-1 p-3">
