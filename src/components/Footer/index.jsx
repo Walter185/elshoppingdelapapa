@@ -4,7 +4,6 @@ const Footer = styled.footer`
     background-color: orange;
     width: 100%;
     margin: auto;
-    margin-top: 40px;
     padding: 20px 0;
     text-align: center;
     letter-spacing: 1px;

@@ -159,14 +159,18 @@ const ContactForm = () => {
     }
   };
 
+  const H4 = styled.h4`
+ color: #78909c;
+ text-align: left;
+`;
   return (
     <Form ref={form} onSubmit={handleSubmit}>
-      <h4 style={{ color: '#78909c' }}>
+      <H4>
         <b>Escríbanos su consulta</b>
-      </h4>
-      <p style={{ fontSize: 'medium', color: 'white', marginTop: '-10px' }}>
-        Le responderemos a la brevedad.
-      </p>
+         <p style={{ fontSize: 'medium', color: 'white'}}>
+         Le responderemos a la brevedad.
+         </p>
+      </H4>
 
       <Label>
         <i className="fa fa-user"></i>&nbsp;<strong>Nombre:&nbsp;</strong>

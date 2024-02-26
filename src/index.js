@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react';
 import styled from "styled-components";
 
 const Whatsapp=styled.a`
@@ -28,23 +27,13 @@ const Whatsapp=styled.a`
 
 `;
 
-const config = {
-  initialColorMode: 'dark',
-  useSystemColorMode: true,
-}
-
-const theme = extendTheme({config})
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <ChakraProvider>
-          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <App />
           <Whatsapp href="https://api.whatsapp.com/send?phone=59891246285" className="btn-wsp" target="_blank">
               <i className="fa fa-whatsapp icono"></i>
           </Whatsapp>
-          </ChakraProvider>
   </React.StrictMode>
 );
 
